@@ -1,0 +1,332 @@
+body{
+    position: relative;
+    margin: 0;
+}
+
+p{
+    margin: 0;
+}
+.side-nav{
+    position: fixed;
+    display: inline-block;
+    height: 100vh;
+    width: 100px;
+    background-color: rgb(189, 241, 189);
+}
+
+.m-100{
+    /* position: relative; */
+    margin-left: 100px;
+}
+.inline-block{
+    display: inline-block;
+}
+
+.side-nav-items{
+    padding: 10px;
+    margin-top: 30px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.side-nav-item{
+    padding: 30px;
+}
+
+.main{
+    padding: 2px;
+}
+
+.main-bg{
+    background-color: gainsboro;
+}
+
+.desc{
+    /* border: 1px grey solid;
+    background: gainsboro;
+    border-radius: 10px; */
+    margin: 0 0 10px 0;
+    padding: 10px;
+    border-bottom: 2px black solid;
+}
+
+.desc-flex{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.status{
+    font-size: 12px;
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.tags{
+    font-size: 12px;
+    border-radius: 3px;
+    padding: 5px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border: black 1px solid;
+    color: black;
+    background: white;
+}
+
+.subject{
+    margin: 10px 0 10px 0;
+}
+.s-2{
+    background-color:  rgb(206, 233, 53);
+    color: rgb(175, 21, 16);
+    border: red 1px solid;
+}
+
+.s-3{
+    background: rgb(98, 192, 247);
+    color: blue;
+    border: blue 1px solid;
+}
+
+.s-4{ 
+    background: greenyellow;
+    color: green;
+    border: green 1px solid;
+}
+
+.s-5{
+    background-color: black;
+    color: white;
+    border: black 1px solid;
+}
+
+.s-6{
+    background-color:rgb(243, 180, 63);
+    color: darkred;
+    border: darkred 1px solid;
+}
+
+.s-7{
+    background-color: rgb(208, 175, 240);
+    color: rebeccapurple;
+    border: rebeccapurple 1px solid;
+}
+
+.pri-1{
+    color: rgb(122, 194, 14);
+}
+
+.pri-2{
+    color: lightskyblue;
+}
+
+.pri-3{
+    color: orange;
+}
+
+.pri-4{
+    color: red;
+}
+
+.about-flex{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.red{
+    color: red;
+}
+
+
+.ticket{
+    border: black 1px solid;
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+}
+
+.status-col{
+    display: flex;
+    flex-direction: column;
+}
+
+.small-text{
+    font-size: 12px;
+}
+
+.grey{
+    color: grey;
+}
+
+.line-flex{
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.status-tags{
+    margin-left: 10px;
+    display: inline-flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+}
+
+.small-icon{
+    font-size: 0.5rem;
+}
+
+.update-flex{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.edit-flex{
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+}
+
+.edit-btn{
+    margin: 10px;
+    color: rgb(27, 166, 221);
+}
+.edit-btn:hover{
+    color: blue;
+}
+
+.delete-btn{
+    margin: 10px;
+    color: orange;
+}
+.delete-btn:hover{
+    color: red;
+}
+
+
+.close-btn{
+    margin: 10px;
+    color: greenyellow;
+}
+
+.close-btn:hover{
+    color: green;
+}
+
+
+a.action span{
+    display: none;
+}
+
+a.action:hover{
+    position: relative;
+}
+
+a.action:hover span{
+    border: black 1px solid;
+    border-radius: 2px; 
+    padding: 2px;
+    display: block;
+    z-index: 100;
+    background: gainsboro;
+    left: 12px;
+    margin: 20px;
+    position: absolute;
+    top: 10px;
+    text-decoration: none
+}
+
+#cancel{
+    background-color: rgb(233, 112, 112);
+    columns: white;
+    border:  rgb(233, 112, 112) 2px solid;
+    float: left;
+    margin: 10px;
+}
+
+#cancel:hover{
+    background-color: red;
+    columns: black;
+    border:  black 2px solid;
+}
+
+#submit{
+    background-color: green;
+    color: white;
+    border: green 2px solid;
+    float: right;
+    margin: 10px;
+}
+
+#submit:hover{
+    background-color: greenyellow;
+    color: black;
+    border: black 2px solid;
+}
+
+.ticket-form{
+    width : 70%;
+    margin: auto;
+}
+
+label{
+    margin: .625rem .625rem 0 .2rem;
+}
+.form-field{
+    border-radius: 5px;
+    margin: .625rem;
+    width: 100%;
+}
+
+.error{
+    border: red 1px solid;
+}
+
+
+.err-message{
+    font-size: 12px;
+    color: red;
+}
+
+.bold{
+    font-weight: bolder;
+}
+
+#notify-message{
+    position: fixed;
+    height: 30px;
+    width: 150px;
+    z-index: 100;
+    box-shadow: 10px 10px 8px #888888;
+    background-color: rgb(7, 218, 7);
+    border-radius: 3px;
+    top: 20;
+    right: 30;
+    color: black;
+    display: none;
+    justify-content: center;
+    text-align: center;    
+}
+
+@media (min-width: 770px){
+    .desc{
+        border: none;
+        background: white;
+        border-radius: none;
+        margin:0;
+        padding: 0;
+    }
+
+    .edit-flex{
+        flex-direction: column;
+    }
+}
