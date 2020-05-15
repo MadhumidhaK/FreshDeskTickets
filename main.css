@@ -6,17 +6,25 @@ body{
 p{
     margin: 0;
 }
+
+a:hover{
+    text-decoration:none;
+}
+
 .side-nav{
     position: fixed;
     display: inline-block;
-    height: 100vh;
-    width: 100px;
+    height: 100%;
+    width: 90px;
     background-color: rgb(189, 241, 189);
 }
+/* .row{
 
+    margin-right: 0;
+} */
 .m-100{
     /* position: relative; */
-    margin-left: 100px;
+    margin-left: 90px;
 }
 .inline-block{
     display: inline-block;
@@ -42,6 +50,72 @@ p{
 .main-bg{
     background-color: gainsboro;
 }
+.click-here{
+    color: rgb(110, 165, 14);
+    margin: auto;
+    font-size: 20px;
+}
+
+.login-div{
+    margin: auto;
+    width: 70%;
+    position: relative;
+    top: 200;
+    min-width: 250px;
+}
+
+#domain,
+#api-key{
+    width: 100%;
+    min-width: 250px;
+    display: block;
+    margin:  10px 0;
+    border: 2px black solid;
+    border-radius: 5px;
+}
+
+#login{
+    border: 1px black solid;
+    background-color:rgb(207, 236, 207);
+    color:black;
+    border-radius:5px;
+}
+
+#login:hover{
+    background-color: darkgreen;
+    color: white
+}
+.span-link{
+    cursor: pointer;
+    color: rgb(16, 141, 243);
+}
+
+.span-link:hover{
+    cursor: pointer;
+    color: rgb(10, 100, 173);
+    border-bottom: 1px solid rgb(10, 100, 173);
+}
+
+.create-btn{
+    text-align:center;
+    border: 1px black solid;
+    padding: 3px;
+    margin: 10px auto;
+    float: right;
+    width: 100px;
+    display:block;
+    background-color:rgb(207, 236, 207);
+/*     background-color: rgb(179, 207, 130);; */
+/*     background-color: darkseagreen; */
+    color:black;
+    border-radius:5px;
+}
+
+.create-btn:hover{
+    background-color: darkgreen;
+    color: white;
+}
+
 
 .desc{
     /* border: 1px grey solid;
@@ -171,6 +245,13 @@ p{
     flex-wrap: nowrap;
 }
 
+.center{
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
 .status-tags{
     margin-left: 10px;
     display: inline-flex;
@@ -223,15 +304,19 @@ p{
 }
 
 
-a.action span{
+span.action{
+    cursor: pointer;
+}
+
+span.action span{
     display: none;
 }
 
-a.action:hover{
+span.action:hover{
     position: relative;
 }
 
-a.action:hover span{
+span.action:hover span{
     border: black 1px solid;
     border-radius: 2px; 
     padding: 2px;
@@ -243,6 +328,26 @@ a.action:hover span{
     position: absolute;
     top: 10px;
     text-decoration: none
+}
+
+.tag-div{
+    position:relative;
+}
+
+.form-field+span{
+    display:none;
+}
+
+.form-field:focus+span{
+    position:absolute;
+    display:block;
+    top: 5;
+    left: 35;
+    border: aliceblue 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    color:aliceblue;
+    background-color:blue;
 }
 
 #cancel{
@@ -274,18 +379,18 @@ a.action:hover span{
 }
 
 .ticket-form{
-    width : 70%;
+    width : 100%;
     margin: auto;
 }
 
 label{
     margin: .625rem .625rem 0 .2rem;
 }
-.form-field{
+.form-field {
     border-radius: 5px;
-    margin: .625rem;
     width: 100%;
-}
+    margin: 0.625rem auto;
+} 
 
 .error{
     border: red 1px solid;
@@ -303,9 +408,10 @@ label{
 
 #notify-message{
     position: fixed;
-    height: 30px;
-    width: 150px;
+    /* height: 30px;
+    width: 150px; */
     z-index: 100;
+    padding: 6px;
     box-shadow: 10px 10px 8px #888888;
     background-color: rgb(7, 218, 7);
     border-radius: 3px;
@@ -318,6 +424,13 @@ label{
 }
 
 @media (min-width: 770px){
+
+    .side-nav{
+        width: 90px;
+    }
+    .m-100{
+        margin-left: 100px;
+    }
     .desc{
         border: none;
         background: white;
@@ -329,4 +442,32 @@ label{
     .edit-flex{
         flex-direction: column;
     }
+
+    .ticket-form{
+        width : 70%;
+        margin: auto;
+    }
+
+    /* .row{
+        margin-right: -15px;
+    } */
+
+    .form-field {
+        border-radius: 5px;
+        margin: .625rem;
+        width: 100%;
+        /* margin: 0.625rem auto */
+    }  
+    
+    .login-div{
+        width: 300px;
+    }
+
+    #domain,
+    #api-key{
+        width: 100%;
+        display: block;
+        margin: 10px;
+    }
+    
 }

@@ -21,7 +21,7 @@ console.log(btoa("L7PXgLaTSS4hNqUgkYQO:X"));
 //     }
 // }).then(res => res.json()).then(res => console.log(res)).catch(err => console.log(err))
 
-var url = `https://kmadhumidha56.freshdesk.com/api/v2/contacts?email=anne.richard1@freshdesk.com`; 
+var url = `https://kmadhumidha56.freshdesk.com/api/v2/tickets?per_page=10&page=1`; 
 
 fetch(url, {
     method: 'GET',
@@ -30,16 +30,8 @@ fetch(url, {
         'Content-Type' : 'application/json'
     }
 }).then(res => {
-    if(res.statusCode = 404){
-        console.log('false response');
-        return false
-    }else{
-        res.json()
-    }
-}).then(res => {
-    if(res){
-        console.log(res)
-    }else{
-        console.log('no');
-    }
+    console.log(res);
+   res.json();
+}).then(resp => {
+        console.log(resp);
 }).catch(err => console.log(err))

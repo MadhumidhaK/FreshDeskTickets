@@ -3,8 +3,8 @@ const contactsNav = $('[name="contacts"]');
 const main = $(`.main`);
 
 
-const domain = 'kmadhumidha56';
-const key = 'L7PXgLaTSS4hNqUgkYQO';
+let domain = 'kmadhumidha56';
+let key = 'L7PXgLaTSS4hNqUgkYQO';
 const perPage = 20;
 
 const statusCodes = {
@@ -41,17 +41,69 @@ const types = ["Question", "Incident", "Problem", "Feature Request", "Refund"]
 
 const topRow = $(`.top`);
 
+
+$(document).ready(function(){
+    const clickHereText = $(`<p class='click-here'>Click  <span class='span-link'>here</span> to change the domain and API Key</p>`);
+    main.html(clickHereText);
+
+    const clickHereLink = $(`.span-link`);
+    clickHereLink.on('click', function(){
+        const loginDiv = $(`<div class='login-div'></div>`);
+        const domainField = $(`<input type='text' id="domain" placeholder='domain.freshdesk.com'>`);
+        const apiKeyField = $(`<input type='text' id='api-key' placeholder='Enter your API Key'>`);
+        const submitBtn = $(`<button id='login'>Submit</button>`);
+        
+        loginDiv.append(domainField);
+        loginDiv.append(apiKeyField);
+        loginDiv.append($(`<div class='center'></div>`).append(submitBtn));
+        main.html(loginDiv);
+
+        submitBtn.on('click', async function(){
+            const enteredDomain = domainField.val().trim().slice(0, -14);
+            const enteredApiKey = apiKeyField.val().trim();
+
+            try{
+                const url =`https://${enteredDomain}.freshdesk.com/api/v2/tickets?per_page=10&page=1`; ;
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers:{
+                        'Authorization':  'Basic ' + btoa(enteredApiKey + ':' + 'X'),
+                        'Content-Type' : 'application/json'
+                    }
+                });
+
+                if(response.status == 200){
+                    domain = enteredDomain;
+                    key = enteredApiKey;
+                    const notify = $(`#notify-message`)
+                    notify.text('Connected to helpdesk');
+                    notify.fadeIn('slow').delay(3000).fadeOut('slow');
+                    displayTicketsInit();
+                }else{
+                    alert('Unable to connect to your helpdesk. Entered details are invalid');
+                }
+            }catch(err){
+                console.log(err);
+                console.log('Error while changeing the domain');
+            }
+        })
+
+    })
+})
+
 ticketsNav.on('click', function(){
     topRow.html("");
     const createTicket = $(`<a href="#" class="create-btn">New Ticket</a>`);
+   
+    topRow.append(createTicket);    
+    displayTicketsInit();
     createTicket.on('click', async function(){
         main.html("");
         main.removeClass('main-bg');
         const ticketForm = await getTicketForm();
-        main.append(ticketForm);
+        main.html(ticketForm);
+        $(`.ticket`).remove();
     })
-    topRow.append(createTicket);    
-    displayTicketsInit();
 });
 
 async function contactFieldHandle(contactField){
@@ -121,7 +173,7 @@ async function agentFieldHandle(agentField, selectedGroup, editFlag = false, tic
 }
 
 async function getTicketForm(editFlag = false, ticket = {}){
-    const form = $(`<form class="ticket-form"></form>`);
+    const form = $(`<form class="ticket-form" autocomplete="off"></form>`);
 
     const contactFieldLabel = $(`<label for="contact">Contact</label>`);
     form.append(contactFieldLabel);
@@ -186,10 +238,14 @@ async function getTicketForm(editFlag = false, ticket = {}){
     form.append(descLabel);
     form.append(descriptionTextArea);
 
+    const tagDiv = $(`<div class='tag-div'></div>`);
     const tagsFieldLabel = $(`<label for="tags">Tags</label>`);
-    form.append(tagsFieldLabel);
-    const tagsField = $(`<input class="form-field" id="tags"></input>`);
-    form.append(tagsField);
+    tagDiv.append(tagsFieldLabel);
+    const tagsField = $(`<input class="form-field" id="tags"><span>Leave a space between tags</span></input>`);
+    
+
+    tagDiv.append(tagsField);
+    form.append(tagDiv);
     //https://stackoverflow.com/questions/10839570/how-does-stackoverflow-make-its-tag-input-field
 
     const cancel = $(`<button class='btn' id="cancel">Cancel</button>`);
@@ -433,6 +489,7 @@ async function displayTicketsInit(){
 
 async function displayTickets(page){
     main.html("");
+    const insideMain = $(`<div></div>`);
     main.addClass('main-bg');
     const tickets = await getTickets(page);
 
@@ -449,8 +506,9 @@ async function displayTickets(page){
 
         ticketCol.append(ticketInfoRow);
         ticketRow.append(ticketCol);
-        main.append(ticketRow);
+        insideMain.append(ticketRow);
     });
+    main.html(insideMain);
 }
 
 async function getUpdate(ticket){
@@ -473,7 +531,7 @@ async function getEditCol(ticket){
     const editCol = $(`<div class="edit-flex"></div>`);
 
     // const editBtn = $(`<button class='btn edit-btn small-text' name="edit"><i class="fa fa-edit"></i>Edit</button>`);
-    const editBtn = $(`<a href="#" class="action"><i class="fa fa-edit fa-2x edit-btn"></i><span>Edit</span></a>`);
+    const editBtn = $(`<span class="action"><i class="fa fa-edit fa-2x edit-btn"></i><span>Edit</span></span>`);
     editCol.append(editBtn);
 
     editBtn.on('click', async function(){
@@ -482,7 +540,7 @@ async function getEditCol(ticket){
     });
 
     // const closeBtn = $(`<button class="btn close-btn small-text" name="close">Close</button>`);
-    const closeBtn = $(`<a href="#" class="action"><i class="fa fa-check fa-2x close-btn" aria-hidden="true"></i><span>Close</span></a>`);
+    const closeBtn = $(`<span  class="action"><i class="fa fa-check fa-2x close-btn" aria-hidden="true"></i><span>Close</span></span>`);
     editCol.append(closeBtn);
 
     closeBtn.on('click', async function(){
@@ -495,7 +553,7 @@ async function getEditCol(ticket){
     })
 
     // const deleteBtn = $(`<button class="btn delete-btn small-text" name="delete">Delete</button>`);
-    const deleteBtn = $(`<a href="#" class="action"><i class="fa fa-trash fa-2x delete-btn"></i><span>Delete</span></a>`);
+    const deleteBtn = $(`<span class="action"><i class="fa fa-trash fa-2x delete-btn"></i><span>Delete</span></span>`);
     editCol.append(deleteBtn);
 
     deleteBtn.on('click', async function(){
