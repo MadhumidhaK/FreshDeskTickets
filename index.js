@@ -2,7 +2,6 @@
 var key = "L7PXgLaTSS4hNqUgkYQO"
 
 console.log(btoa("L7PXgLaTSS4hNqUgkYQO:X"));
-
 // fetch(url, {
 //     method: 'GET',
 //     headers:{

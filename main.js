@@ -167,9 +167,6 @@ async function agentFieldHandle(agentField, selectedGroup, editFlag = false, tic
             }
         });
     }
-
-    
-    
 }
 
 async function getTicketForm(editFlag = false, ticket = {}){
