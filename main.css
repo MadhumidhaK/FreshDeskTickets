@@ -10,7 +10,9 @@ p{
 a:hover{
     text-decoration:none;
 }
-
+.open-side-nav{
+    display: none;
+}
 .side-nav{
     position: fixed;
     display: inline-block;
@@ -425,6 +427,7 @@ label{
 @media (min-width: 770px){
 
     .side-nav{
+        display: inline-block;
         width: 90px;
     }
     .m-100{
@@ -469,4 +472,49 @@ label{
         margin: 10px;
     }
     
+}
+
+
+
+@media (max-width: 540px){
+    .side-nav{
+        display: none;
+    }
+
+    .m-100{
+        margin-left: 0;
+    }
+
+    .open-side-nav{
+        background-color:darkolivegreen ;
+        border: 1px black solid;
+        padding: 5px;
+        border-radius: 5px;
+        margin-left: -5px;
+        display: inline-block;
+        margin-top: 10px;
+        position: fixed;
+        z-index: 50;
+    }
+
+    .click-here{
+        position: relative;
+        top: 50;
+    }
+}
+
+.backdrop{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0, 0.2);
+    display: none;
+    z-index: 9;
+}
+
+.open-inline-block{
+    z-index: 100;
+    display: inline-block;
 }

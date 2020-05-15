@@ -1,7 +1,7 @@
 const ticketsNav = $('[name="tickets"]');
 const contactsNav = $('[name="contacts"]');
 const main = $(`.main`);
-
+const openSideNav = $(`.open-side-nav`);
 
 let domain = 'kmadhumidha56';
 let key = 'L7PXgLaTSS4hNqUgkYQO';
@@ -40,7 +40,18 @@ const sourceCodes = {
 const types = ["Question", "Incident", "Problem", "Feature Request", "Refund"]
 
 const topRow = $(`.top`);
-
+const sideNav = $(`.side-nav`);
+const backDrop = $(`.backdrop`);
+openSideNav.on('click', function(){
+    openSideNav.hide();
+    backDrop.show();
+    sideNav.addClass('open-inline-block');
+    backDrop.on('click', function(){
+        sideNav.removeClass('open-inline-block');
+        backDrop.hide();
+        openSideNav.show();
+    })
+})
 
 $(document).ready(function(){
     const clickHereText = $(`<p class='click-here'>Click  <span class='span-link'>here</span> to change the domain and API Key</p>`);
@@ -93,6 +104,9 @@ $(document).ready(function(){
 
 ticketsNav.on('click', function(){
     topRow.html("");
+    sideNav.removeClass('open-inline-block');
+    backDrop.hide();
+    openSideNav.show();
     const createTicket = $(`<a href="#" class="create-btn">New Ticket</a>`);
    
     topRow.append(createTicket);    
