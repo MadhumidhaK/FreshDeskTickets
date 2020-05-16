@@ -13,6 +13,8 @@ a:hover{
 .open-side-nav{
     display: none;
 }
+
+
 .side-nav{
     position: fixed;
     display: inline-block;
@@ -181,11 +183,7 @@ a:hover{
     border: green 1px solid;
 }
 
-.s-5{
-    background-color: black;
-    color: white;
-    border: black 1px solid;
-}
+
 
 .s-6{
     background-color:rgb(243, 180, 63);
@@ -198,6 +196,13 @@ a:hover{
     color: rebeccapurple;
     border: rebeccapurple 1px solid;
 }
+
+.s-5{
+    background-color: black;
+    color: white;
+    border: black 1px solid;
+}
+
 
 .pri-1{
     color: rgb(122, 194, 14);
@@ -481,6 +486,13 @@ label{
         margin: 10px;
     }
     
+}
+
+.display-block{
+    display: block;
+}
+.no-display{
+    display: none;
 }
 
 

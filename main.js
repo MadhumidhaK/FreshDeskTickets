@@ -43,13 +43,13 @@ const topRow = $(`.top`);
 const sideNav = $(`.side-nav`);
 const backDrop = $(`.backdrop`);
 openSideNav.on('click', function(){
-    openSideNav.hide();
+    openSideNav.addClass('display-block');
     backDrop.show();
     sideNav.addClass('open-inline-block');
     backDrop.on('click', function(){
         sideNav.removeClass('open-inline-block');
         backDrop.hide();
-        openSideNav.show();
+        openSideNav.removeClass('display-block');
     })
 })
 
@@ -106,7 +106,7 @@ ticketsNav.on('click', function(){
     topRow.html("");
     sideNav.removeClass('open-inline-block');
     backDrop.hide();
-    openSideNav.show();
+    openSideNav.addClass('display-block');
     const createTicket = $(`<a href="#" class="create-btn">New Ticket</a>`);
    
     topRow.append(createTicket);    
