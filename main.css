@@ -72,8 +72,17 @@ a:hover{
     min-width: 250px;
     display: block;
     margin:  10px 0;
-    border: 2px black solid;
-    border-radius: 5px;
+    border: none;
+    border-bottom: 2px black solid;
+    /* border-radius: 5px; */
+}
+
+#domain:focus,
+#api-key:focus{
+    border: none;
+    outline: none;
+    border-bottom: 2px rgb(0, 195, 255) solid;
+    /* border-radius: 5px; */
 }
 
 #login{
@@ -487,14 +496,15 @@ label{
 
     .open-side-nav{
         background-color:darkolivegreen ;
-        border: 1px black solid;
-        padding: 5px;
+        border: 1px rgb(110, 165, 14) solid;
+        padding: 5px 5px 5px 8px;        
         border-radius: 5px;
-        margin-left: -5px;
+        margin-left: -3px;
         display: inline-block;
         margin-top: 10px;
         position: fixed;
         z-index: 50;
+        color: lawngreen;
     }
 
     .click-here{
