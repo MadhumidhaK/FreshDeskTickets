@@ -26,7 +26,7 @@ a:hover{
 
     margin-right: 0;
 } */
-.m-100{
+.mar-100{
     /* position: relative; */
     margin-left: 90px;
 }
@@ -444,7 +444,7 @@ label{
         display: inline-block;
         width: 90px;
     }
-    .m-100{
+    .mar-100{
         margin-left: 100px;
     }
     .desc{
@@ -502,7 +502,7 @@ label{
         display: none;
     }
 
-    .m-100{
+    .mar-100{
         margin-left: 0;
     }
 
