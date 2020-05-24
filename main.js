@@ -734,7 +734,7 @@ function getCreatedText(ticket){
     if(hourDifference < 25){
         if(hourDifference <= 0){
             const minuteDifference = Math.floor((currentDate - createdDate)/ (60*1000));
-            if(minuteDifference == 0){ 
+            if(minuteDifference <= 0){ 
                 // const secondDifference = Math.floor((currentDate - createdDate)/ (1000));
                 // created.text(`Created ${secondDifference} ${secondDifference == 1 ? 'second' : 'second'} ago.`);
                 created.text(`Created just now`);
